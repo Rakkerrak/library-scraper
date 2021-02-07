@@ -19,11 +19,11 @@ def ensearch():
     pass
 
 
-def jpnsearch():
+def jpnsearch(*, ofile = "jpbooks.json", ifile = "isbnlist.txt", startid = 0):
 
-    ofile = "jpbooks.json"
-    ifile = "isbnlist.txt"
-    startid = 0        #to continue numbering an existing json
+#    ofile = "jpbooks.json"
+#    ifile = "isbnlist.txt"
+#    startid = 0        #to continue numbering an existing json
 #creating the browser 
     browser = mechanicalsoup.StatefulBrowser(user_agent = 'PersonalLibrary: cowstaktetime@gmail.com')
     browser.set_verbose(2)
@@ -76,7 +76,7 @@ def jpnsearch():
                 print(f"Something went wrong: ISBN no. {counter} {num}, numsdict iter{i}")
 #ascii=False because it hates jp characters by default?
         currjson = (json.dumps(currbook, ensure_ascii=False))
-        print(currjson)
+#        print(currjson)
 #print valid entries to file
         with open(ofile, "a") as file:
             file.write(currjson + ",\n")
@@ -85,5 +85,5 @@ def jpnsearch():
 #        break
         time.sleep(1)
 
-jpnsearch()
+#jpnsearch()
 
